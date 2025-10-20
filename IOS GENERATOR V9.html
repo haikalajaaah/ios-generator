@@ -1,217 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IOS GENERATOR V9</title>
-    <style>
-body {
-  margin: 0;
-  background: linear-gradient(180deg, #0d47a1, #42a5f5 60%, #e3f2fd);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: "SF Pro Display", "Inter", sans-serif;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOS GENERATOR V9</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #0d47a1, #42a5f5 60%, #e3f2fd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "SF Pro Display", "Inter", sans-serif;
+      flex-direction: column;
+    }
 
-.iphone {
-  position: relative;
-  width: 330px;
-  height: 670px;
-  border-radius: 60px;
-  background: #0f1724;
-  box-shadow: 0 0 25px rgba(0, 0, 0, .6);
-  overflow: hidden;
-}
+    .iphone {
+      position: relative;
+      width: 330px;
+      height: 670px;
+      border-radius: 60px;
+      background: #0f1724;
+      box-shadow: 0 0 25px rgba(0, 0, 0, .6);
+      overflow: hidden;
+    }
 
-.wallpaper {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, #0d47a1, #42a5f5 60%, #e3f2fd);
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-}
+    .wallpaper {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #0d47a1, #42a5f5 60%, #e3f2fd);
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
 
-.island {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 38px;
-  background: #000;
-  border-radius: 19px;
-  z-index: 10;
-}
+    .island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 38px;
+      background: #000;
+      border-radius: 19px;
+      z-index: 10;
+    }
 
-.status-bar {
-  position: absolute;
-  top: 8px;
-  left: 15px;
-  right: 15px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  z-index: 11;
-}
+    .status-bar {
+      position: absolute;
+      top: 8px;
+      left: 15px;
+      right: 15px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      z-index: 11;
+    }
 
-.status-left {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
+    .status-left, .status-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-.status-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+    .signal {
+      width: 14px;
+      height: 10px;
+      display: flex;
+      align-items: flex-end;
+      gap: 1px;
+    }
 
-.signal {
-  width: 14px;
-  height: 10px;
-  display: flex;
-  align-items: flex-end;
-  gap: 1px;
-}
+    .signal div {
+      width: 2px;
+      background: white;
+      border-radius: 1px;
+    }
 
-.signal div {
-  width: 2px;
-  background: white;
-  border-radius: 1px;
-}
+    .signal div:nth-child(1) { height: 3px; }
+    .signal div:nth-child(2) { height: 5px; }
+    .signal div:nth-child(3) { height: 7px; }
+    .signal div:nth-child(4) { height: 9px; }
 
-.signal div:nth-child(1) { height: 3px; }
-.signal div:nth-child(2) { height: 5px; }
-.signal div:nth-child(3) { height: 7px; }
-.signal div:nth-child(4) { height: 9px; }
+    .battery {
+      position: relative;
+      width: 20px;
+      height: 10px;
+      border: 1.8px solid #fff;
+      border-radius: 2px;
+    }
 
-.battery {
-  position: relative;
-  width: 20px;
-  height: 10px;
-  border: 1.8px solid #fff;
-  border-radius: 2px;
-}
+    .battery::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      right: -3px;
+      width: 2px;
+      height: 4px;
+      background: #fff;
+      border-radius: 1px;
+    }
 
-.battery::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  right: -3px;
-  width: 2px;
-  height: 4px;
-  background: #fff;
-  border-radius: 1px;
-}
+    .battery-level {
+      background: #4caf50;
+      height: 100%;
+      width: 80%;
+    }
 
-.battery-level {
-  background: #4caf50;
-  height: 100%;
-  width: 80%;
-}
+    .datetime {
+      position: absolute;
+      top: 140px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      z-index: 5;
+    }
 
-.datetime {
-  position: absolute;
-  top: 140px;
-  width: 100%;
-  text-align: center;
-  color: white;
-  z-index: 5;
-}
+    .time {
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 1;
+    }
 
-.time {
-  font-weight: 700;
-  font-size: 80px;
-  line-height: 1;
-}
+    .date {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-top: 8px;
+    }
 
-.date {
-  font-size: 18px;
-  opacity: 0.9;
-  margin-top: 8px;
-}
+    .notifications {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 80%;
+      z-index: 5;
+    }
 
-.notifications {
-  position: absolute;
-  bottom: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 80%;
-  z-index: 5;
-}
+    .notif {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 15px;
+      padding: 8px 10px;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
 
-.notif {
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  border-radius: 15px;
-  padding: 8px 10px;
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
+    .notif img {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
 
-.notif img {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  margin-right: 10px;
-}
+    .notif .content { flex: 1; }
+    .notif .name { font-weight: 600; font-size: 14px; }
+    .notif .msg { font-size: 12px; opacity: 0.9; }
 
-.notif .content { flex: 1; }
-.notif .name { font-weight: 600; font-size: 14px; }
-.notif .msg { font-size: 12px; opacity: 0.9; }
+    .frame {
+      position: absolute;
+      inset: 0;
+      border: 8px solid #222;
+      border-radius: 60px;
+      z-index: 12;
+      pointer-events: none;
+    }
 
-.frame {
-  position: absolute;
-  inset: 0;
-  border: 8px solid #222;
-  border-radius: 60px;
-  z-index: 12;
-  pointer-events: none;
-}
+    .controls {
+      margin-top: 1rem;
+      text-align: center;
+      color: white;
+    }
 
-.controls {
-  margin-top: 1rem;
-  text-align: center;
-  color: white;
-}
+    input, button, select {
+      margin-top: .4rem;
+      padding: .4rem;
+      border: none;
+      border-radius: 8px;
+    }
 
-input, button, select {
-  margin-top: .4rem;
-  padding: .4rem;
-  border: none;
-  border-radius: 8px;
-}
+    button {
+      background: #1976d2;
+      color: #fff;
+      cursor: pointer;
+    }
 
-button {
-  background: #1976d2;
-  color: #fff;
-  cursor: pointer;
-}
-
-button:hover { background: #2196f3; }
-    </style>
+    button:hover { background: #2196f3; }
+  </style>
 </head>
 <body>
-<div>
   <div class="iphone" id="iphone">
     <div class="wallpaper" id="wallpaper"></div>
-
     <div class="island"></div>
 
-    <!-- Status Bar -->
     <div class="status-bar">
-      <div class="status-left">
-        <span id="statusTime">10:20</span>
-      </div>
+      <div class="status-left"><span id="statusTime">10:20</span></div>
       <div class="status-right">
         <div class="signal"><div></div><div></div><div></div><div></div></div>
         <span id="networkName">4G</span>
@@ -220,13 +210,11 @@ button:hover { background: #2196f3; }
       </div>
     </div>
 
-    <!-- Date & Time -->
     <div class="datetime">
       <div class="time" id="mainTime">10:20</div>
       <div class="date" id="mainDate">Minggu, 19 Oktober 2025</div>
     </div>
 
-    <!-- Notifications -->
     <div class="notifications">
       <div class="notif" id="wa">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -264,60 +252,61 @@ button:hover { background: #2196f3; }
     <button id="applyStatus">Ubah Info Atas & Tengah</button><br><br>
     <button id="download">Download PNG</button>
   </div>
-</div>
-    <script>
-const wallpaper = document.getElementById("wallpaper");
-document.getElementById("upload").addEventListener("change", e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(event) {
-    wallpaper.style.backgroundImage = `url('${event.target.result}')`;
-  };
-  reader.readAsDataURL(file);
-});
 
-// Ganti info atas dan tengah
-document.getElementById("applyStatus").onclick = () => {
-  document.getElementById("statusTime").textContent = document.getElementById("statusTimeInput").value || "10:20";
-  document.getElementById("mainTime").textContent = document.getElementById("mainTimeInput").value || "10:20";
-  document.getElementById("mainDate").textContent = document.getElementById("dateInput").value || "Minggu, 19 Oktober 2025";
-  document.getElementById("networkName").textContent = document.getElementById("networkInput").value || "4G";
+  <!-- html2canvas (WAJIB ADA DI ATAS SCRIPT UTAMA) -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
-  const battery = Math.min(100, Math.max(0, parseInt(document.getElementById("batteryInput").value) || 0));
-  document.getElementById("batteryText").textContent = `${battery}%`;
-  document.getElementById("batteryLevel").style.width = `${battery}%`;
-  document.getElementById("batteryLevel").style.background = battery < 20 ? "#f44336" : (battery < 50 ? "#ffb300" : "#4caf50");
-};
+  <script>
+    const wallpaper = document.getElementById("wallpaper");
 
-// Ubah notifikasi
-document.getElementById("applyNotif").onclick = () => {
-  const target = document.getElementById("notifSelect").value;
-  const sender = document.getElementById("sender").value || "Pengirim";
-  const msg = document.getElementById("message").value || "Pesan...";
-  if (target === "wa") {
-    document.getElementById("waName").textContent = `WhatsApp - ${sender}`;
-    document.getElementById("waMsg").textContent = msg;
-  } else {
-    document.getElementById("tgName").textContent = `Telegram - ${sender}`;
-    document.getElementById("tgMsg").textContent = msg;
-  }
-};
+    // Upload wallpaper
+    document.getElementById("upload").addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        wallpaper.style.backgroundImage = `url('${event.target.result}')`;
+      };
+      reader.readAsDataURL(file);
+    });
 
-// Download hasil mockup
-document.getElementById("download").onclick = () => {
-  html2canvas(document.getElementById("iphone"), {scale:3}).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "iphone14_mockup_custom_wallpaper.png";
-    link.href = canvas.toDataURL();
-    link.click();
-  });
-};
+    // Ganti info atas dan tengah
+    document.getElementById("applyStatus").onclick = () => {
+      document.getElementById("statusTime").textContent = document.getElementById("statusTimeInput").value || "10:20";
+      document.getElementById("mainTime").textContent = document.getElementById("mainTimeInput").value || "10:20";
+      document.getElementById("mainDate").textContent = document.getElementById("dateInput").value || "Minggu, 19 Oktober 2025";
+      document.getElementById("networkName").textContent = document.getElementById("networkInput").value || "4G";
 
-// Load html2canvas
-const s=document.createElement("script");
-s.src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
-document.body.appendChild(s);
-    </script>
+      const battery = Math.min(100, Math.max(0, parseInt(document.getElementById("batteryInput").value) || 0));
+      document.getElementById("batteryText").textContent = `${battery}%`;
+      document.getElementById("batteryLevel").style.width = `${battery}%`;
+      document.getElementById("batteryLevel").style.background =
+        battery < 20 ? "#f44336" : (battery < 50 ? "#ffb300" : "#4caf50");
+    };
+
+    // Ubah notifikasi
+    document.getElementById("applyNotif").onclick = () => {
+      const target = document.getElementById("notifSelect").value;
+      const sender = document.getElementById("sender").value || "Pengirim";
+      const msg = document.getElementById("message").value || "Pesan...";
+      if (target === "wa") {
+        document.getElementById("waName").textContent = `WhatsApp - ${sender}`;
+        document.getElementById("waMsg").textContent = msg;
+      } else {
+        document.getElementById("tgName").textContent = `Telegram - ${sender}`;
+        document.getElementById("tgMsg").textContent = msg;
+      }
+    };
+
+    // Download hasil mockup
+    document.getElementById("download").onclick = async () => {
+      const iphone = document.getElementById("iphone");
+      const canvas = await html2canvas(iphone, { scale: 3, useCORS: true });
+      const link = document.createElement("a");
+      link.download = "iphone_mockup.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+  </script>
 </body>
 </html>
